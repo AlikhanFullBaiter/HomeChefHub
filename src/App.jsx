@@ -11,6 +11,7 @@ import Menu from './pages/Menu.jsx'
 import DishDetails from './pages/DishDetails.jsx'
 import About from './pages/About.jsx'
 import { CartProvider } from './context/CartContext.jsx'
+import Checkout from './pages/Checkout.jsx'
 
 const App = () => {
 	React.useEffect(() => {
@@ -40,6 +41,7 @@ const App = () => {
 					<Route path='/menu' element={<Menu />} />
 					<Route path='/about' element={<About />} />
 					<Route path='/menu/:id' element={<DishDetails />} />
+					<Route path='/checkout' element={<Checkout />} />
 				</Routes>
 				<Footer />
 			</div>

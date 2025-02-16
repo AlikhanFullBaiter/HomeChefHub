@@ -1,10 +1,12 @@
 import React from 'react'
 import { useCart } from '../../context/CartContext'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
 	const { cart, removeFromCart } = useCart()
+	const navigate = useNavigate()
 
-	// Подсчет общей стоимости заказа
+	// Подсчет общей суммы заказа
 	const totalPrice = cart
 		.reduce((sum, item) => sum + item.price * item.quantity, 0)
 		.toFixed(2)
@@ -50,7 +52,7 @@ const Cart = () => {
 					{/* Кнопка Order Now */}
 					<div className='flex justify-center mt-6'>
 						<button
-							onClick={() => alert('Order placed successfully!')}
+							onClick={() => navigate('/checkout')}
 							className='bg-primary text-white py-2 px-6 rounded-lg text-lg hover:bg-secondary transition'
 						>
 							Order Now
