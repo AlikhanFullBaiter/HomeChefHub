@@ -6,23 +6,19 @@ const Checkout = () => {
 	const { cart, clearCart } = useCart()
 	const navigate = useNavigate()
 
-	// Поля для ввода
 	const [address, setAddress] = useState('')
 	const [paymentMethod, setPaymentMethod] = useState('')
 
-	// Подсчет общей суммы заказа
 	const totalPrice = cart
 		.reduce((sum, item) => sum + item.price * item.quantity, 0)
 		.toFixed(2)
 
-	// Обработчик оформления заказа
 	const handleOrder = () => {
 		if (!address || !paymentMethod) {
 			alert('Please enter your address and select a payment method.')
 			return
 		}
 
-		// Очистка корзины после оформления заказа
 		clearCart()
 		alert('Your order has been placed successfully!')
 		navigate('/')
@@ -32,7 +28,6 @@ const Checkout = () => {
 		<div className='container mx-auto py-10'>
 			<h1 className='text-3xl font-bold text-center mb-6'>Checkout</h1>
 			<div className='max-w-lg mx-auto bg-gray-100 dark:bg-gray-800 p-6 rounded-lg'>
-				{/* Отображение товаров в корзине */}
 				<ul>
 					{cart.map((item, index) => (
 						<li
@@ -51,12 +46,10 @@ const Checkout = () => {
 					))}
 				</ul>
 
-				{/* Общая сумма */}
 				<div className='text-lg font-bold text-right mt-4'>
 					Total: <span className='text-primary'>${totalPrice}</span>
 				</div>
 
-				{/* Поле для ввода адреса */}
 				<div className='mt-4'>
 					<label className='block font-semibold mb-1'>Delivery Address:</label>
 					<input
@@ -68,7 +61,6 @@ const Checkout = () => {
 					/>
 				</div>
 
-				{/* Выбор способа оплаты */}
 				<div className='mt-4'>
 					<label className='block font-semibold mb-1 '>Payment Method:</label>
 					<select
@@ -83,7 +75,6 @@ const Checkout = () => {
 					</select>
 				</div>
 
-				{/* Кнопка подтверждения заказа */}
 				<div className='flex justify-center mt-6'>
 					<button
 						onClick={handleOrder}

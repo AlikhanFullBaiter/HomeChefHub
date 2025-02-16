@@ -69,7 +69,7 @@ const Services = () => {
 									<div className='w-full '>
 										<StarRatings
 											rating={4.6}
-											starRatedColor='yellow'
+											starRatedColor='orange'
 											isSelectable={false}
 											starHoverColor='yellow'
 											starDimension='20px'

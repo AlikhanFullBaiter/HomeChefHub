@@ -5,11 +5,12 @@ import { FaCartShopping } from 'react-icons/fa6'
 import { useCart } from '../context/CartContext'
 import MenuData from '../data/Data'
 import Cart from '../components/Cart/Cart'
+import StarRatings from 'react-star-ratings'
 
 const DishDetails = () => {
 	const { id } = useParams()
 	const dish = MenuData.find(item => item.id === parseInt(id))
-	const { cart, addToCart } = useCart() // Получаем cart
+	const { cart, addToCart } = useCart()
 	const [selectedChef, setSelectedChef] = useState(null)
 
 	if (!dish) {
@@ -46,8 +47,6 @@ const DishDetails = () => {
 						</p>
 					</div>
 				</div>
-
-				{/* Список шефов */}
 				<div className='mt-16'>
 					<h2 className='text-3xl font-bold text-center mb-6'>
 						Choose Your Chef
@@ -70,6 +69,16 @@ const DishDetails = () => {
 									className='w-24 h-24 object-cover rounded-full mb-4'
 								/>
 								<h3 className='text-xl font-semibold'>{chef.name}</h3>
+								<StarRatings
+									rating={chef.rating}
+									starRatedColor='orange'
+									isSelectable={false}
+									starHoverColor='yellow'
+									starDimension='20px'
+									changeRating={() => {}}
+									numberOfStars={5}
+									name='rating'
+								/>
 								<p className='text-gray-500 mt-2'>
 									Price: ${chef.price.toFixed(2)}
 								</p>
@@ -77,8 +86,6 @@ const DishDetails = () => {
 						))}
 					</div>
 				</div>
-
-				{/* Кнопка "Добавить в корзину" */}
 				<AnimatePresence>
 					{selectedChef && (
 						<motion.div
@@ -109,7 +116,6 @@ const DishDetails = () => {
 					)}
 				</AnimatePresence>
 
-				{/* Корзина внизу страницы */}
 				<div className='w-full max-w-4xl mx-auto mt-12'>
 					<Cart cart={cart} />
 				</div>

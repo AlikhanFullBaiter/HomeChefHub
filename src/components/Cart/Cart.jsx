@@ -6,7 +6,6 @@ const Cart = () => {
 	const { cart, removeFromCart } = useCart()
 	const navigate = useNavigate()
 
-	// Подсчет общей суммы заказа
 	const totalPrice = cart
 		.reduce((sum, item) => sum + item.price * item.quantity, 0)
 		.toFixed(2)
@@ -44,12 +43,10 @@ const Cart = () => {
 						))}
 					</ul>
 
-					{/* Общая сумма заказа */}
 					<div className='text-lg font-bold text-right mt-4'>
 						Total: <span className='text-primary'>${totalPrice}</span>
 					</div>
 
-					{/* Кнопка Order Now */}
 					<div className='flex justify-center mt-6'>
 						<button
 							onClick={() => navigate('/checkout')}
